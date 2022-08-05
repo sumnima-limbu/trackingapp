@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FlatList, Text } from 'react-native';
+import { FlatList, Text } from "react-native";
 import { Formik } from "formik";
 import PushNotification from "../components/PushNotification";
 import InputField from "../components/InputField";
-import GlobalContext from './../Store/GlobalContext';
+import GlobalContext from "./../Store/GlobalContext";
 import {
   WelcomeContainer,
   InnerContainer,
@@ -12,13 +12,13 @@ import {
   ButtonText,
   ListContainer,
   ListMainContent,
-  BoldText
+  BoldText,
 } from "./../components/style";
+import tw from "twrnc";
 
 const Circle = () => {
   const store = useContext(GlobalContext);
-  const [message, setMessage] = useState('');
-
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (store.circle && store.circle.length > 0) return;
@@ -27,25 +27,25 @@ const Circle = () => {
   });
 
   const getCircle = () => {
-    store.getCircle()
-      .catch(err => {
-        console.log(err);
-      });
-  }
+    store.getCircle().catch((err) => {
+      console.log(err);
+    });
+  };
 
   const requestCircle = (values) => {
-    store.requestCircle(values)
-      .then(res => {
+    store
+      .requestCircle(values)
+      .then((res) => {
         setMessage(res.data.message);
       })
-      .catch(error => {
+      .catch((error) => {
         if (error && error.response && error.response.data) {
           setMessage(error.response.data.message);
         } else {
-          setMessage('Something went wrong');
+          setMessage("Something went wrong");
         }
       });
-  }
+  };
 
   return (
     <>
@@ -57,13 +57,22 @@ const Circle = () => {
               return (
                 <ListContainer>
                   <ListMainContent>
-                    <BoldText>{item.friend.name}</BoldText>
-                    <Text>{item.friend.email}</Text>
+                    <BoldText
+                      style={tw`text-xl font-extra-bold text-orange-500`}
+                    >
+                      {item.friend.name}
+                    </BoldText>
+                    <Text style={tw`font-bold text-base mt-2`}>
+                      {item.friend.email}
+                    </Text>
+                    <Text style={tw`font-bold text-base`}>
+                      {item.friend.phone_number}
+                    </Text>
                   </ListMainContent>
                 </ListContainer>
-              )
+              );
             }}
-            style={{ paddingTop: 40, width: '100%' }}
+            style={{ paddingTop: 40, width: "100%" }}
           />
 
           <Formik
@@ -75,7 +84,7 @@ const Circle = () => {
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <StyledFormArea>
-                {message !== '' && <Text> {message} </Text>}
+                {message !== "" && <Text> {message} </Text>}
                 <InputField
                   label=""
                   icon="mail"

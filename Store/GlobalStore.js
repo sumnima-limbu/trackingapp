@@ -9,7 +9,7 @@ import initialState from "./initialState";
 // ip address from expo web debugger which runs at localhost:19002
 // you can see the ip right above the barcode on the left
 const API_BASE_URL =
-  "https://7139-2400-1a00-b030-688-3def-567c-6a04-ef3b.in.ngrok.io";
+  "https://d7e2-2400-1a00-b030-2da2-acb2-f548-a018-12f2.in.ngrok.io";
 
 export default class GlobalStore extends React.Component {
   constructor(props) {

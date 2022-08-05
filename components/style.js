@@ -14,10 +14,20 @@ export const Colors = {
   brand: "#05A3DE",
   green: "#10B981",
   red: "#EF4444",
+  black: "#000000",
 };
 
-const { primary, secondary, tertiary, darkLight, darkGray, brand, green, red } =
-  Colors;
+const {
+  primary,
+  secondary,
+  tertiary,
+  darkLight,
+  darkGray,
+  brand,
+  green,
+  red,
+  black,
+} = Colors;
 
 export const StyledContainer = styled.View`
   flex: 1;
@@ -49,7 +59,7 @@ export const Avatar = styled.Image`
   margin: auto;
   border-radius: 50px;
   border-width: 2px;
-  border-color: ${secondary};
+  border-color: ${black};
   margin-bottom: 10px;
   margin-top: 10px;
 `;
@@ -192,6 +202,8 @@ export const ListContainer = styled.View`
   margin: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  background-color: #ffff;
+  padding: 15px 10px;
 `;
 
 export const ListMainContent = styled.View`
@@ -208,4 +220,6 @@ export const ListSideContent = styled.View`
 
 export const BoldText = styled.Text`
   font-weight: bold;
-`
+  margin: 0;
+  padding: 0;
+`;
