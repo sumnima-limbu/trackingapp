@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Dimensions } from "react-native";
-import MapView, { Polyline, Marker } from "react-native-maps";
+import MapView, { Polyline, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 
 const Map = ({ locations }) => {
@@ -29,6 +29,7 @@ const Map = ({ locations }) => {
 
   return (
     <MapView
+      provider={PROVIDER_GOOGLE}
       style={styles.map}
       region={{
         latitude: locations[0].latitude,
@@ -37,6 +38,9 @@ const Map = ({ locations }) => {
         longitudeDelta: 0.05,
       }}
       showsUserLocation={true}
+      showsMyLocationButton={true}
+      showsCompass={true}
+      mapPadding={{ top: 25, right: 10, bottom: 30, left: 20 }}
     >
       <Polyline
         coordinates={locations}

@@ -26,9 +26,11 @@ import {
   ExtraText,
   TextLink,
   TextLinkContent,
-  DangerText
+  DangerText,
+  Line,
 } from "./../components/style";
 import { View, TouchableOpacity } from "react-native";
+import tw from "twrnc";
 
 //Colors
 const { brand, darkLight, darkGray, green, tertiary, primary } = Colors;
@@ -43,7 +45,7 @@ const Signup = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(new Date(2000, 0, 1));
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   // Actual date of birth to be set
   const [dob, setDob] = useState();
@@ -62,14 +64,14 @@ const Signup = ({ navigation }) => {
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
+        <PageTitle>FINDME</PageTitle>
         <StatusBar style="dark" />
-        <InnerContainer>
+        <SubTitle style={tw`pb-5 mb-4`}>Welcome Onboard !</SubTitle>
+        <InnerContainer style={tw`mt-1`}>
           {/* <PageLogo
           resizeMode="cover"
           source={require("./../assets/img/img1.png")}
         /> */}
-          <PageTitle>Find Me</PageTitle>
-          <SubTitle>Account Signup</SubTitle>
 
           {show && (
             <DateTimePicker
@@ -93,21 +95,26 @@ const Signup = ({ navigation }) => {
             onSubmit={(values) => {
               values.dob = dob;
 
-              store.register(values).then(() => {
-                setError('');
-              }).catch(error => {
-                if (error && error.response && error.response.data) {
-                  setError(error.response.data.message);
-                } else {
-                  setError('Something went wrong');
-                }
+              store
+                .register(values)
+                .then(() => {
+                  setError("");
+                })
+                .catch((error) => {
+                  if (error && error.response && error.response.data) {
+                    setError(error.response.data.message);
+                  } else {
+                    setError("Something went wrong");
+                  }
                   console.log(error, values);
-              });
+                });
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <StyledFormArea>
-                { error !== '' && <DangerText style={{color: 'red'}}> {error} </DangerText>}
+                {error !== "" && (
+                  <DangerText style={{ color: "red" }}> {error} </DangerText>
+                )}
                 <MyTextInput
                   label="Full Name"
                   icon="person"
@@ -173,10 +180,11 @@ const Signup = ({ navigation }) => {
                 <StyledButton onPress={handleSubmit}>
                   <ButtonText>Sign Up</ButtonText>
                 </StyledButton>
+                <Line />
                 <ExtraView>
                   <ExtraText>Already have an account? </ExtraText>
                   <TextLink onPress={() => navigation.navigate("login")}>
-                    <TextLinkContent>Login</TextLinkContent>
+                    <TextLinkContent>Log In</TextLinkContent>
                   </TextLink>
                 </ExtraView>
               </StyledFormArea>

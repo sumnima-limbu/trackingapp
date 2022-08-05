@@ -9,7 +9,7 @@ import {
   InnerContainer,
   StyledFormArea,
   StyledButton,
-  ButtonText,
+  Button,
   ListContainer,
   ListMainContent,
   BoldText,
@@ -57,9 +57,7 @@ const Circle = () => {
               return (
                 <ListContainer>
                   <ListMainContent>
-                    <BoldText
-                      style={tw`text-xl font-extra-bold text-orange-500`}
-                    >
+                    <BoldText style={tw`text-xl font-bold text-orange-500`}>
                       {item.friend.name}
                     </BoldText>
                     <Text style={tw`font-bold text-base mt-2`}>
@@ -95,7 +93,7 @@ const Circle = () => {
                   keyboardType="email-address"
                 />
                 <StyledButton onPress={handleSubmit}>
-                  <ButtonText>Add to Circle</ButtonText>
+                  <Button>Add to Circle</Button>
                 </StyledButton>
               </StyledFormArea>
             )}

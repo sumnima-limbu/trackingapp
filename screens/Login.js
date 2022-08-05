@@ -38,41 +38,46 @@ const { brand, darkLight, darkGray, primary } = Colors;
 //keyboard avoiding view
 import KeyboardAvoidingWrapper from "./../components/KeyboardAvoidingWrapper";
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const store = useContext(GlobalContext);
 
   return (
     <KeyboardAvoidingWrapper>
       <StyledContainer>
+        <PageTitle>FINDME</PageTitle>
         <StatusBar style="dark" />
+        <SubTitle>Welcome Back !</SubTitle>
         <InnerContainer>
           <PageLogo
             resizeMode="cover"
-            source={require("./../assets/img/img1.png")}
+            source={require("./../assets/img/login.png")}
           />
-          <PageTitle>Find Me</PageTitle>
-          <SubTitle>Account Login</SubTitle>
 
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
-              store.login(values).then(() => {
-                setError('');
-              }).catch(error => {
-                if (error && error.response && error.response.data) {
-                  setError(error.response.data.message);
-                } else {
-                  setError('Something went wrong');
-                }
+              store
+                .login(values)
+                .then(() => {
+                  setError("");
+                })
+                .catch((error) => {
+                  if (error && error.response && error.response.data) {
+                    setError(error.response.data.message);
+                  } else {
+                    setError("Something went wrong");
+                  }
                   console.log(error);
-              });
+                });
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
               <StyledFormArea>
-                { error !== '' && <DangerText style={{color: 'red'}}> {error} </DangerText>}
+                {error !== "" && (
+                  <DangerText style={{ color: "red" }}> {error} </DangerText>
+                )}
                 <MyTextInput
                   label="Email Address"
                   icon="mail"
@@ -99,7 +104,7 @@ const Login = ({navigation}) => {
                 />
                 <MsgBox>...</MsgBox>
                 <StyledButton onPress={handleSubmit}>
-                  <ButtonText>Login</ButtonText>
+                  <ButtonText>Log In</ButtonText>
                 </StyledButton>
                 <Line />
                 {/*<StyledButton google={true} onPress={handleSubmit}>
@@ -107,8 +112,8 @@ const Login = ({navigation}) => {
                   <ButtonText google={true}>Sign in with Google</ButtonText>
                 </StyledButton>*/}
                 <ExtraView>
-                  <ExtraText>Don't have an account already? </ExtraText>
-                  <TextLink onPress={() => navigation.navigate('signup')}>
+                  <ExtraText>Don't have an account ? </ExtraText>
+                  <TextLink onPress={() => navigation.navigate("signup")}>
                     <TextLinkContent>Signup</TextLinkContent>
                   </TextLink>
                 </ExtraView>

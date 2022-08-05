@@ -50,7 +50,7 @@ export const WelcomeContainer = styled(InnerContainer)`
 
 export const PageLogo = styled.Image`
   width: 300px;
-  height: 250px;
+  height: 300px;
 `;
 
 export const Avatar = styled.Image`
@@ -71,7 +71,7 @@ export const WelcomeImage = styled.Image`
 
 export const PageTitle = styled.Text`
   font-size: 30px;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
   color: ${brand};
   padding: 10px;
@@ -84,9 +84,9 @@ export const PageTitle = styled.Text`
 `;
 
 export const SubTitle = styled.Text`
-  font-size: 16px;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 60px;
   font-weight: bold;
   color: ${tertiary};
 `;
@@ -145,9 +145,22 @@ export const StyledButton = styled.TouchableOpacity`
   `}
 `;
 
+export const Button = styled.Text`
+  color: ${primary};
+  font-size: 18px;
+  font-weight: bold,
+    ${(props) =>
+      props.google == true &&
+      `
+    padding-left: 10px;
+  `};
+`;
+
 export const ButtonText = styled.Text`
   color: ${primary};
-  font-size: 16px;
+  letter-spacing: 1px;
+  font-size: 21px;
+  font-weight: bold;
 
   ${(props) =>
     props.google == true &&
@@ -179,7 +192,8 @@ export const ExtraText = styled.Text`
   justify-content: center;
   align-content: center;
   color: ${tertiary};
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: bold;
 `;
 
 export const TextLink = styled.TouchableOpacity`
@@ -190,6 +204,8 @@ export const TextLink = styled.TouchableOpacity`
 export const TextLinkContent = styled.Text`
   color: ${brand};
   font-size: 15px;
+  font-size: 18px;
+  font-weight: bold;
 `;
 
 export const DangerText = styled.Text`

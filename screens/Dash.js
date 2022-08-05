@@ -1,5 +1,5 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 import Profile from "./Profile";
 import Location from "./Location";
 import Circle from "./Circle";
@@ -13,15 +13,15 @@ const Dash = () => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          unmountOnBlur: true
+          unmountOnBlur: true,
         }}
       >
         <Tab.Screen
           name="Profile"
           component={Profile}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="home" color={color} size={size} />
+            tabBarIcon: ({ size }) => (
+              <Ionicons name="home" color="black" size={size} />
             ),
           }}
         />

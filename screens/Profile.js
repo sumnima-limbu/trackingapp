@@ -9,7 +9,7 @@ import {
   SubTitle,
   StyledFormArea,
   StyledButton,
-  ButtonText,
+  Button,
   Line,
   WelcomeContainer,
   WelcomeImage,
@@ -29,7 +29,9 @@ const Profile = () => {
               resizeMode="cover"
               source={require("./../assets/profile.png")}
             />
-            <PageTitle welcome={true}>Welcome!</PageTitle>
+            <PageTitle welcome={true} style={tw`text-center`}>
+              Welcome!
+            </PageTitle>
 
             <View style={tw`m-3 p-4`}>
               <Text style={tw`mt-2 text-lg text-center font-semibold`}>
@@ -47,7 +49,7 @@ const Profile = () => {
 
             <Line />
             <StyledButton onPress={() => store.reset()}>
-              <ButtonText>Logout</ButtonText>
+              <Button>Logout</Button>
             </StyledButton>
           </StyledFormArea>
         </WelcomeContainer>
