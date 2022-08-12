@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, ScrollView, TouchableOpacity, Text, Image, Alert } from "react-native";
 import tw from "twrnc";
 import GlobalContext from "../Store/GlobalContext";
 
@@ -16,44 +16,93 @@ import {
   Avatar,
 } from "./../components/style";
 
-const Profile = () => {
+const Profile = ({ route, navigation }) => {
   const store = useContext(GlobalContext);
 
   return (
     <>
-      <InnerContainer>
-        <WelcomeContainer style={tw`bg-gray-200 h-full`}>
-          <StyledFormArea>
+      <View>
+        <ScrollView>
+          <View style={{padding:10, width:'100%', backgroundColor:'#000f', height:150}}>
+          </View>
+          <View style={tw`flex justify-center items-center h-screen`}>
             <Avatar
-              style={tw`mt-6 p-5`}
               resizeMode="cover"
               source={require("./../assets/profile.png")}
             />
-            <PageTitle welcome={true} style={tw`text-center`}>
-              Welcome!
-            </PageTitle>
+            <Text style={tw`font-bold text-3xl pt-6 pb-6`}>User Name</Text>
+            <Text style={tw`text-xl font-bold text-gray-600`}>age, Name</Text>
+          </View>
 
-            <View style={tw`m-3 p-4`}>
-              <Text style={tw`mt-2 text-lg text-center font-semibold`}>
-                <Text style={tw`font-bold`}>Name: </Text>
-                {store.user && store.user.name}
+          <View style={{
+            width:"90%", 
+            justifyContent:'center',
+            alignSelf: 'center',
+            flexDirection: 'column'}}>
+              
+            <TouchableOpacity style={{
+                alignSelf: 'center',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                backgroundColor: '#fff',
+                width: '90%',
+                padding: 20,
+                paddingBottom: 22,
+                borderRadius:10,
+                shadowOpacity: 80,
+                elevation: 15,
+                marginTop: 40,
+                }}>
+              <Text style={{fontSize:15, color:'#818181', fontWeight:'bold', marginLeft:10 }}>Edit Profile Details</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={{
+                alignSelf: 'center',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                backgroundColor: '#fff',
+                width: '90%',
+                padding: 20,
+                paddingBottom: 22,
+                borderRadius:10,
+                shadowOpacity: 80,
+                elevation: 15,
+                marginTop: 20,
+              }}>
+            <Text style={{fontSize:15, color:'#818181', fontWeight:'bold', marginLeft:10}}>
+                Location History
               </Text>
-              <Text style={tw`mt-2 text-lg text-center font-semibold`}>
-                <Text style={tw`font-bold`}>Email: </Text>
-                {store.user && store.user.email}
-              </Text>
-            </View>
+          </TouchableOpacity>
 
-            {/* <SubTitle welcome={true}>{store.user && store.user.name}</SubTitle>
-            <SubTitle welcome={true}>{store.user && store.user.email}</SubTitle> */}
+          <View style={{
+            alignSelf: 'center',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            backgroundColor: '#fff',
+            width: '90%',
+            padding: 20,
+            paddingBottom: 22,
+            borderRadius:10,
+            shadowOpacity: 80,
+            elevation: 15,
+            marginTop: 20,
+            marginBottom:30,
+          }}>
+          <Text style={{fontSize:15, color:'#818181', fontWeight:'bold', marginLeft:10  }}>Button</Text>
+          </View>
 
+          <View>
             <Line />
-            <StyledButton onPress={() => store.reset()}>
+            <StyledButton style={{marginLeft:20, marginRight: 20}} onPress={()=>store.reset()}>
               <Button>Logout</Button>
             </StyledButton>
-          </StyledFormArea>
-        </WelcomeContainer>
-      </InnerContainer>
+          </View>
+          </View>
+      
+        </ScrollView>
+      </View>
+
+      
     </>
   );
 };

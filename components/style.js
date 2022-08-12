@@ -54,14 +54,11 @@ export const PageLogo = styled.Image`
 `;
 
 export const Avatar = styled.Image`
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   margin: auto;
-  border-radius: 50px;
-  border-width: 2px;
-  border-color: ${black};
-  margin-bottom: 10px;
-  margin-top: 10px;
+  border-radius: 100px;
+  marginTop: -70px;
 `;
 
 export const WelcomeImage = styled.Image`
@@ -148,7 +145,8 @@ export const StyledButton = styled.TouchableOpacity`
 export const Button = styled.Text`
   color: ${primary};
   font-size: 18px;
-  font-weight: bold,
+  font-weight: bold;
+
     ${(props) =>
       props.google == true &&
       `
@@ -219,7 +217,7 @@ export const ListContainer = styled.View`
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #ffff;
-  padding: 15px 10px;
+  padding: 6px 10px;
 `;
 
 export const ListMainContent = styled.View`
