@@ -31,7 +31,7 @@ const PushNotification = () => {
         });
         setExpoPushToken(token);
       })
-      .catch(err => { console.log('push err') });
+      .catch(err => { console.log(err) });
 
     // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
@@ -60,7 +60,7 @@ const PushNotification = () => {
         }}>
         {message !== '' && <Text> {message} </Text>}
         <Button
-          title="Notify Circle"
+          title="Send Emergency Alert"
           style={{
             backgroundColor: 'red'
           }}
@@ -80,6 +80,7 @@ const PushNotification = () => {
 async function sendPushNotification(store, setMessage) {
   store.notifyCircle()
     .then(res => {
+      console.log('notify cirlce', res);
       setMessage('Circle Notified.');
     })
     .catch(err => {
@@ -88,6 +89,7 @@ async function sendPushNotification(store, setMessage) {
     });
 
   await store.circle.forEach((item) => {
+    console.log('here', item);
     if (item.friend.device_id) {
       const message = {
         to: item.friend.device_id,
@@ -96,6 +98,8 @@ async function sendPushNotification(store, setMessage) {
         body: 'I think I am in trouble. Here\'s my location.',
         data: { location: [{ lat: 1, long: 2 }, { lat: 2, long: 3 }] },
       };
+
+      console.log('message', message);
 
       fetch('https://exp.host/--/api/v2/push/send', {
         method: 'POST',

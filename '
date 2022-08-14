@@ -88,7 +88,6 @@ const Signup = ({ navigation }) => {
             initialValues={{
               fullName: "",
               email: "",
-              phoneNumber: "",
               dateofBirth: "",
               password: "",
               confirmPassword: "",
@@ -142,10 +141,10 @@ const Signup = ({ navigation }) => {
                   icon="mail"
                   placeholder=""
                   placeholderTextColor={darkGray}
-                  onChangeText={handleChange("phoneNumber")}
-                  onBlur={handleBlur("phoneNumber")}
-                  value={values.phoneNumber}
-                  keyboardType="number-pad"
+                  onChangeText={handleChange("phone_number")}
+                  onBlur={handleBlur("phone_number")}
+                  value={values.email}
+                  keyboardType="number"
                 />
 
 

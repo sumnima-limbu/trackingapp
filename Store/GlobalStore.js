@@ -8,8 +8,9 @@ import initialState from "./initialState";
 // while developing, api is run at localhost so you can get
 // ip address from expo web debugger which runs at localhost:19002
 // you can see the ip right above the barcode on the left
-const API_BASE_URL =
-  "https://d7e2-2400-1a00-b030-2da2-acb2-f548-a018-12f2.in.ngrok.io";
+// const API_BASE_URL =
+  // "https://d7e2-2400-1a00-b030-2da2-acb2-f548-a018-12f2.in.ngrok.io";
+const API_BASE_URL = "http://192.168.10.78";
 
 export default class GlobalStore extends React.Component {
   constructor(props) {
@@ -79,6 +80,7 @@ export default class GlobalStore extends React.Component {
     const preparedData = {
       name: data.fullName,
       email: data.email,
+      phone_number: data.phoneNumber,
       date_of_birth: new Date(data.dob)
         .toISOString()
         .slice(0, 19)
